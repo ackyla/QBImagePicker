@@ -652,8 +652,9 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     } else {
         numberOfColumns = self.imagePickerController.numberOfColumnsInLandscape;
     }
-    
-    CGFloat width = (CGRectGetWidth(self.view.frame) - 2.0 * (numberOfColumns - 1)) / numberOfColumns;
+
+		CGFloat viewWidth = self.imagePickerController.preferredContentSize.width > 0 ? self.imagePickerController.preferredContentSize.width : CGRectGetWidth(self.view.frame);
+    CGFloat width = (viewWidth - 2.0 * (numberOfColumns - 1)) / numberOfColumns;
     
     return CGSizeMake(width, width);
 }
